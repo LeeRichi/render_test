@@ -4,7 +4,7 @@ const cors = require('cors')
 
 app.use(cors())
 
-//test
+app.use(express.static('dist'))
 
 let notes = [
   {
@@ -33,8 +33,7 @@ app.get('/api/notes', (request, response) => {
 
 app.get('/api/notes/:id', (request, response) => {
   const id = Number(request.params.id)
-  const note = notes.find(note => note.id === id)
-  
+  const note = notes.find(note => note.id === id)  
 
   if (note) {
     response.json(note)
@@ -81,3 +80,4 @@ const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
+
