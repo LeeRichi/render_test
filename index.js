@@ -23,9 +23,13 @@ let notes = [
     important: true
   }
 ]
-app.get('/', (request, response) => {
-  response.send('<h1>Hello World!</h1>')
-})
+// app.get('/', (request, response) => {
+//   response.send('<h1>Hello World!</h1>')
+// })
+
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root: 'dist' });
+});
 
 app.get('/api/notes', (request, response) => {
   response.json(notes)
